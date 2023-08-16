@@ -5,22 +5,18 @@ const Budget = () => {
     const {currency,dispatch,budget,expenses}  = useContext(AppContext);
     const updateBudget = (event) => {
         let newbudget = parseInt(event.target.value);
-        if (newbudget < expenses){
-            alert("you cannot reduce budget lower than spending");
-            console.log("hi");
+        if (newbudget > 20000){
+            alert("Cannot exceed 20000!");
             dispatch({
                 type: 'SET_BUDGET',
-                payload: expenses,
-             });
+                payload: 20000,
+            });
         }
-        else{
-            dispatch({
-              type: 'SET_BUDGET',
-              payload: parseInt(newbudget),
-           });
-        }
-
-
+        dispatch({
+            type: 'SET_BUDGET',
+            payload: newbudget,
+        });
+    
     }
  
     return (
