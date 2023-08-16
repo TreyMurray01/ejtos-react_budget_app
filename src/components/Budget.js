@@ -1,13 +1,25 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const Budget = () => {
-    const {currency,dispatch,budget}  = useContext(AppContext);
+    const {currency,dispatch,budget,expenses}  = useContext(AppContext);
     const updateBudget = (event) => {
-        dispatch({
-            type: 'SET_BUDGET',
-            payload: parseInt(event.target.value),
-        });
+        let newbudget = parseInt(event.target.value);
+        if (newbudget < expenses){
+            alert("you cannot reduce budget lower than spending");
+            console.log("hi");
+            dispatch({
+                type: 'SET_BUDGET',
+                payload: expenses,
+             });
+        }
+        else{
+            dispatch({
+              type: 'SET_BUDGET',
+              payload: parseInt(newbudget),
+           });
+        }
+
 
     }
  

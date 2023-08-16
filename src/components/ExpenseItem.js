@@ -3,12 +3,13 @@ import { AppContext } from '../context/AppContext';
 import { FaTimesCircle, FaPlusCircle, FaMinusCircle } from 'react-icons/fa';
 
 const ExpenseItem = (props) => {
-    const { dispatch, Location, currency} = useContext(AppContext);
+    const { dispatch, currency} = useContext(AppContext);
 
 
     const handleIncrease = () => {
         const item = {
             name: props.name,
+            cost: 10,
         };
 
         dispatch({
@@ -20,6 +21,7 @@ const ExpenseItem = (props) => {
     const handleDecrease = () => {
         const item = {
             name: props.name,
+            cost: 10,
         };
 
         dispatch({
@@ -31,6 +33,8 @@ const ExpenseItem = (props) => {
     const handleDeleteItem = () => {
         const item = {
             name: props.name,
+            
+            
         };
 
         dispatch({
